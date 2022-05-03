@@ -24,11 +24,11 @@ function myFunctions() {
 //effet sur le button 1
 let button1 = [...document.querySelectorAll(".button1")];
 button1.forEach(btn => {
-    btn.addEventListener("mouseover", myFunctio)
+    btn.addEventListener("mouseover", () => { myFunctio(btn) })
 });
 
-function myFunctio() {
-    let css = button1.style;
+function myFunctio(btn) {
+    let css = btn.style;
     css.fontWeight = "800";
     css.backgroundColor = "white";
     css.color = "red";
@@ -36,14 +36,16 @@ function myFunctio() {
     css.textShadow = "inset 0 0 15em 0 red , 0 0 0.5em 0 red";
 };
 button1.forEach(btn => {
-    btn.addEventListener("mouseout", myFunctios)
+    btn.addEventListener("mouseout", () => { myFunctios(btn) })
 });
 
-function myFunctios() {
-    let css = button1.style;
+function myFunctios(btn) {
+    let css = btn.style;
     css.fontWeight = "400";
     css.backgroundColor = "white";
     css.color = "red";
     css.boxShadow = "none";
     css.textShadow = "none";
 };
+
+//footer

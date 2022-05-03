@@ -132,3 +132,9 @@ input[type=submit] {
     background-color: white;
     color: #000000;
 }
+
+footer .media img:hover {
+    cursor: pointer;
+    background-color: #42ffd3d4;
+    filter: invert(100%);
+}
