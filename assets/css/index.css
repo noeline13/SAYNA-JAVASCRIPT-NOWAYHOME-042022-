@@ -138,6 +138,31 @@ input[type=submit] {
 /*hover*/
 
 
+/* pour le spiderman slide  */
+
+.spidermanSlide {
+    position: fixed;
+    top: 18%;
+    right: 1%;
+    opacity: 0%;
+}
+
+.spiderNoir {
+    position: fixed;
+    top: 50%;
+    left: 0%;
+    opacity: 0%;
+}
+
+.opa1 {
+    opacity: 80% !important;
+}
+
+.opa2 {
+    opacity: 0% !important;
+}
+
+
 /*animation*/
 
 .slider {

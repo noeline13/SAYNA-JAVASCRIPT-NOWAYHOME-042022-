@@ -1,4 +1,4 @@
-:root{
+:root {
     --primary-ad-color: #b11313;
     --black-ad-color: #000000;
     --white-ad-color: #ffffff;
@@ -7,8 +7,7 @@
 
 /* La partie Hero de la page Bonus */
 
-
-#hero{
+#hero {
     background-image: url("../img/img35.png");
     height: 550px;
     background-repeat: no-repeat;
@@ -16,23 +15,35 @@
     background-size: cover;
 }
 
-#hero .box{
+#hero .box {
     top: 55%;
 }
+
 
 /* Mobile version footer2 page Bonus */
 
 @media screen and (max-width:600px) {
-    .conteneur{
+    .conteneur {
         width: 100%;
         margin: 0 auto;
     }
-    .brand-mobile{
+    .brand-mobile {
         background-color: var(--primary-ad-color);
         padding: 20px 40px;
     }
-
-    .box{
+    .box {
         padding-left: 40px;
     }
 }
+
+
+/*footer*/
+
+.hover {
+    cursor: pointer;
+    background-color: #42ffd3d4 !important;
+    filter: invert(100%);
+}
+
+
+/* compte a rebour */

@@ -63,23 +63,32 @@ for (let i = 0; i < menu.length; i++) {
     })
 }
 
+//scroll image
+const slideSpiderman = document.getElementById('spidermanSlide')
+const spiderNoir = document.getElementById('spiderNoir')
+
+window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    if (scroll >= 100 && scroll < 1560) {
+        slideSpiderman.style.opacity = '80%'
+        spiderNoir.style.opacity = '0%'
+    } else if (scroll >= 1560 && scroll < 1570) {
+        slideSpiderman.style.opacity = '0%'
+        spiderNoir.style.opacity = '50%'
+    }
+})
+
 //fade in titre
 let title = document.querySelectorAll("h1")
 for (let i = 0; i < title.length; i++) {
     title[i].classList.add("slider")
 }
 
-//fade in paragraphe
+//fade in sub-title
 let paragraphe = document.querySelectorAll(".fade")
 for (let i = 0; i < paragraphe.length; i++) {
     paragraphe[i].classList.add("slide")
 }
-/*// fade in sur le logo
-let logo = document.querySelector("#marvel")
-logo.classList.add("move");*/
-
-
-
 
 /*changement de couleur du  social media dans le footer*/
 let footer = document.querySelectorAll(".image")
@@ -110,7 +119,7 @@ let body = document.querySelector("body")
 function opens() {
     popup.classList.add("open");
     body.style.visibility = "hidden";
-    body.style.background = "red";
+    body.style.background = "white";
 
 
 }
@@ -119,6 +128,7 @@ function closes() {
     popup.classList.remove("open")
     body.style.visibility = "visible"
 }
+
 /*Une barre audio doit apparaître pour gérer l’audio et ajouter de l’interactivité. Il est
 possible d’appuyer sur le cœur (voir image en dessous) ce qui entraîne le remplissage
 de celui-ci en blanc.
@@ -154,7 +164,7 @@ let all_song = [{
 
 // tous les function
 function load_track(index_no) {
-    track.src = all_song[index_no].Path;
+    track.src = all_song[index_no].path;
     title.innerHTML = all_song[index_no].name;
     track_image.src = all_song[index_no].img;
     artist.innerHTML = all_song[index_no].singer;
@@ -239,14 +249,18 @@ let all_card = document.querySelectorAll(".card-unique")
 
 all_card.forEach(card => {
     card.addEventListener("mouseover", () => {
-        //fleches(card) 
-        card.querySelector('.card-text').style.display = "block"
+        card.querySelector('.card-text').style.display = "block";
+        card.querySelector('.card-text').style.marginTop = "20px";
+        card.querySelector('.card-text').style.marginBottom = "20px";
+        card.querySelector('.card-img-top').style.transform = "scale(1.1)";
     })
 });
 
 all_card.forEach(card => {
     card.addEventListener("mouseout", () => {
-        card.querySelector('.card-text').style.display = "none"
+        card.querySelector('.card-text').style.display = "none";
+        card.querySelector('.card-img-top').style.transform = "scale(1)";
+
     })
 });
 
