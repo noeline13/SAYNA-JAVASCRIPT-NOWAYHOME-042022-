@@ -1,5 +1,6 @@
 // effet sur le button 2
 let button2 = document.querySelector(".button2");
+
 button2.addEventListener("mouseover", myFunction);
 
 function myFunction() {
@@ -10,6 +11,7 @@ function myFunction() {
     css.boxShadow = " inset 0 0 15em 0 white ,0 0 0.5em 0 white";
     css.textShadow = "inset 0 0 15em 0 red , 0 0 0.5em 0 red";
 };
+
 button2.addEventListener("mouseout", myFunctions);
 
 function myFunctions() {
@@ -23,6 +25,7 @@ function myFunctions() {
 
 //effet sur le button 1
 let button1 = [...document.querySelectorAll(".button1")];
+
 button1.forEach(btn => {
     btn.addEventListener("mouseover", () => { myFunctio(btn) })
 });
@@ -35,6 +38,7 @@ function myFunctio(btn) {
     css.boxShadow = " inset 0 0 15em 0 red ,0 0 0.5em 0 red";
     css.textShadow = "inset 0 0 15em 0 white , 0 0 0.5em 0 white";
 };
+
 button1.forEach(btn => {
     btn.addEventListener("mouseout", () => { myFunctios(btn) })
 });
@@ -66,31 +70,15 @@ for (let i = 0; i < title.length; i++) {
 }
 
 //fade in paragraphe
-let paragraphe = document.querySelectorAll("p")
+let paragraphe = document.querySelectorAll(".fade")
 for (let i = 0; i < paragraphe.length; i++) {
     paragraphe[i].classList.add("slide")
 }
-// fade in sur le logo
+/*// fade in sur le logo
 let logo = document.querySelector("#marvel")
-logo.classList.add("move");
+logo.classList.add("move");*/
 
-//scroll des image spiderman
-const slideSpiderman = document.getElementsByClassName('slideSpiderman')
-const spiderNoir = document.getElementsByClassName('spiderNoir')
 
-window.addEventListener('scroll', () => {
-    const scroll = window.scrollY;
-    if (scroll > 150 && scroll < 1560) {
-        slideSpiderman.classList.add('opa')
-    } else if (window.scrollY >= 1560 && window.scrollY < 1570) {
-        slideSpiderman.classList.remove('opa')
-    } else if (window.scrollY >= 1570 && window.scrollY < 1700) {
-        spiderNoir.classList.add('opa')
-    } else if (window.scrollY < 1570) {
-        spiderNoir.classList.remove('opa')
-        console.log(window(scrollY));
-    }
-})
 
 
 /*changement de couleur du  social media dans le footer*/
@@ -111,9 +99,159 @@ function moves(img) {
     img.classList.remove("hover")
 };
 
+
 /* Une fois que l’utilisateur complète le formulaire et clique sur le bouton “Envoyer” ou
 “S’ inscrire à la newsletter”, une Popup Box doit s’ afficher pour signaler que l’ opération a
-été effectuée.La Popup Box doit être fondu dans le site.Pour cela il faudra reprendre la
-couleur de fond et mettre une opacité de 90 % .Le texte doit être en gras et il vous faudra
-faire preuve d’ originalité(à vous de proposer des messages de confirmation).Voici un
-exemple pour la Popup Box“ Deviens Spiderman”.*/
+été effectuée.*/
+
+let popup = document.getElementById("pupup")
+let body = document.querySelector("body")
+
+function opens() {
+    popup.classList.add("open");
+    body.style.visibility = "hidden";
+    body.style.background = "red";
+
+
+}
+
+function closes() {
+    popup.classList.remove("open")
+    body.style.visibility = "visible"
+}
+/*Une barre audio doit apparaître pour gérer l’audio et ajouter de l’interactivité. Il est
+possible d’appuyer sur le cœur (voir image en dessous) ce qui entraîne le remplissage
+de celui-ci en blanc.
+*/
+let previous = document.querySelector("#pre");
+let play = document.querySelector("#play");
+let next = document.querySelector("#next");
+let titre = document.querySelector("#titre");
+let slider = document.querySelector("#duration_slider");
+let show_duration = document.querySelector("#show_duration ");
+let track_image = document.querySelector("#track_image");
+let artist = document.querySelector("#artist");
+let timer;
+let index_no = 0;
+let playing_song = 0;
+let loves = document.querySelector(".fa-heart")
+    // creation de l'audio
+let track = document.createElement("audio");
+// tous les music
+let all_song = [{
+        name: "first  song",
+        path: "assets/audio/audio1.mp3",
+        img: "assets/img/img34.png",
+        singer: " first singer",
+    },
+    {
+        name: "second  song",
+        path: "assets/audio/audio1.mp3",
+        img: "assets/img/img35.png",
+        singer: " second singer",
+    }
+];
+
+// tous les function
+function load_track(index_no) {
+    track.src = all_song[index_no].Path;
+    title.innerHTML = all_song[index_no].name;
+    track_image.src = all_song[index_no].img;
+    artist.innerHTML = all_song[index_no].singer;
+    track.load();
+    timer = setInterval(range_slider, 1000);
+
+}
+load_track(index_no);
+
+// checking si les song sont jouer
+function justPlay() {
+    if (playing_song == false) {
+        playSong();
+    } else {
+        pauseSong();
+    }
+}
+
+// jouer le song
+function playSong() {
+    track.play();
+    playing_song = true;
+    play.innerHTML = '<i class = "fa fa-pause"></i>'
+}
+
+// PUASE le song
+function pauseSong() {
+    track.pause();
+    playing_song = false;
+    play.innerHTML = '<i class = "fa fa-play"></i>'
+}
+
+// rempissage du couer
+function love() {
+    loves.classList.add("fa-solid")
+}
+
+// next song
+function nextSong() {
+    if (index_no < all_song.length - 1) {
+        index_no += 1;
+        load_track(index_no);
+        playSong();
+    } else {
+        index_no = 0;
+        load_track(index_no);
+        playSong();
+    }
+};
+
+// previous song
+function previousSong() {
+    if (index_no > 0) {
+        index_no -= 1;
+        load_track(index_no);
+        playSong();
+    } else {
+        index_no = all_song.length;
+        load_track(index_no);
+        playSong();
+    }
+}
+
+//change slider position
+function change_duration() {
+    slider_position = track_duration * (slider_value / 100);
+    track_curretTime = slider_position
+}
+
+function range_slider() {
+    let position = 0;
+    if (!isNaN(track_duration)) {
+        position = track_curretTime * (100 / track_duration);
+        slider_value = position
+    }
+}
+
+/*Les images des trois héros Spiderman doivent zoomer légèrement et individuellement
+au passage de la souris */
+let all_card = document.querySelectorAll(".card-unique")
+
+
+all_card.forEach(card => {
+    card.addEventListener("mouseover", () => {
+        //fleches(card) 
+        card.querySelector('.card-text').style.display = "block"
+    })
+});
+
+all_card.forEach(card => {
+    card.addEventListener("mouseout", () => {
+        card.querySelector('.card-text').style.display = "none"
+    })
+});
+
+//fade in paragraphe
+let para = document.querySelectorAll(".card-text")
+for (let i = 0; i < para.length; i++) {
+    para[i].classList.add("slide")
+}
