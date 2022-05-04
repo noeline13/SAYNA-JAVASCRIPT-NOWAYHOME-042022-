@@ -74,13 +74,23 @@ for (let i = 0; i < paragraphe.length; i++) {
 let logo = document.querySelector("#marvel")
 logo.classList.add("move");
 
-//scroll de l'image
-let image = document.querySelector("")
-image.addEventListener("onclick", scrollWin())
+//scroll des image spiderman
+const slideSpiderman = document.getElementsByClassName('slideSpiderman')
+const spiderNoir = document.getElementsByClassName('spiderNoir')
 
-function scrollWin() {
-    window.scrollTo(0, 500);
-}
+window.addEventListener('scroll', () => {
+    const scroll = window.scrollY;
+    if (scroll > 150 && scroll < 1560) {
+        slideSpiderman.classList.add('opa')
+    } else if (window.scrollY >= 1560 && window.scrollY < 1570) {
+        slideSpiderman.classList.remove('opa')
+    } else if (window.scrollY >= 1570 && window.scrollY < 1700) {
+        spiderNoir.classList.add('opa')
+    } else if (window.scrollY < 1570) {
+        spiderNoir.classList.remove('opa')
+        console.log(window(scrollY));
+    }
+})
 
 
 /*changement de couleur du  social media dans le footer*/
@@ -100,3 +110,10 @@ footer.forEach(img => {
 function moves(img) {
     img.classList.remove("hover")
 };
+
+/* Une fois que l’utilisateur complète le formulaire et clique sur le bouton “Envoyer” ou
+“S’ inscrire à la newsletter”, une Popup Box doit s’ afficher pour signaler que l’ opération a
+été effectuée.La Popup Box doit être fondu dans le site.Pour cela il faudra reprendre la
+couleur de fond et mettre une opacité de 90 % .Le texte doit être en gras et il vous faudra
+faire preuve d’ originalité(à vous de proposer des messages de confirmation).Voici un
+exemple pour la Popup Box“ Deviens Spiderman”.*/
