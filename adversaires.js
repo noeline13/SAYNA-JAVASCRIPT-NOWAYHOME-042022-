@@ -23,6 +23,7 @@ for (let i = 0; i < paragraphe.length; i++) {
 
 /*changement de couleur du  social media dans le footer*/
 let footer = document.querySelectorAll(".image")
+
 footer.forEach(img => {
     img.addEventListener("mouseover", () => { move(img) })
 });
@@ -39,6 +40,8 @@ function moves(img) {
     img.classList.remove("hover")
 };
 
+
+
 //cadre
 
 let all_card = document.querySelectorAll(".card-hero")
@@ -46,6 +49,10 @@ let all_card = document.querySelectorAll(".card-hero")
 all_card.forEach(card => {
     card.addEventListener("mouseover", () => {
         card.querySelector('.card-content').style.display = "block";
+        let para = document.querySelectorAll(".card-content")
+        for (let i = 0; i < para.length; i++) {
+            para[i].classList.add("slide")
+        }
         card.style.transform = "scale(1.2)";
         card.style.border = "none";
         card.style.height = "600px";
@@ -65,12 +72,7 @@ all_card.forEach(card => {
         card.style.marginTop = "20px";
         card.style.marginBottom = "20px";
         card.querySelector(".card-title").style.color = " black";
-        card.querySelector('.card-content').style.display = "none";
-        card.style.height = "300px";
+
+
     })
 });
-
-let para = document.querySelectorAll(".card-content")
-for (let i = 0; i < para.length; i++) {
-    para[i].classList.add("slide")
-}

@@ -127,7 +127,7 @@ footer .brand img:nth-child(2) {
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     width: 300px;
-    height: 300px;
+    height: 600px;
     margin: 20px;
     overflow: hidden;
     box-shadow: 0px 4px 6px var(--black-ad-color);
@@ -171,10 +171,6 @@ footer .brand img:nth-child(2) {
 #card-section .card-hero .card-title {
     text-align: center;
     font-weight: bold;
-}
-
-.card-content {
-    display: none;
 }
 
 #card-section .card-hero .card-content {
